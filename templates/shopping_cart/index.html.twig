@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Shopping Cart{% endblock %}
+
+{% block body %}
+
+{% if items | length > 0 %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produkti</th>
+                <th>Çmimi</th>
+                <th>Sasia</th>
+                <th>Totali</th>
+                <th></th>
+            </tr>
+        </thead>
+        
+    <tbody>
+    {% for item in items  %}
+        <tr>
+            <td>{{ item.product.title}}</td>
+            <td>{{ item.product.price}}€</td>
+            <td>{{ item.quantity}}</td>
+            <td>{{ item.product.price * item.quantity }}€</td>
+            <td>
+                <a href="{{ path('cart_remove', {'id': item.product.id }) }}" class="btn btn-danger btn-sm">
+                   <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+            </td>
+        </tr>
+          {% endfor %}
+    </tbody
+    <tfoot>
+        <td colspan="3" class="text-right">Total :</td>
+        <td><b>{{ total }}€</b></td>
+        <td></td>
+    </tfoot>
+    </table>
+{% else %}
+    <p> Shporta eshte e zbrazet</p>
+{% endif %}
+{% endblock %}

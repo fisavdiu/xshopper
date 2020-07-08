@@ -15,7 +15,7 @@
     <div class="card-body">
       <h5 class="card-title">{{product.title}}</h5>
       <p class="card-text">{{product.description}}</p>
-      <a href=""><button type="button" class="btn btn-primary float-right"><i class="fa fa-plus" aria-hidden="true"></i>
+      <a href="{{ path('cart_add', {'id': product.id})  }}"><button type="button" class="btn btn-primary float-right"><i class="fa fa-plus" aria-hidden="true"></i>
  Add To Cart</button></a>
 
     </div>
