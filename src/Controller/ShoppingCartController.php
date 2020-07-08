@@ -56,7 +56,7 @@ class ShoppingCartController extends AbstractController
 
         $session->set('shoppingcart', $shoppingcart);
 
-        $this->redirectToRouter('shopping_cart')
+        $this->redirectToRouter('shopping_cart');
     }
     /**
      * @Route("/shoppingcart/remove/{id}", name="cart_remove")
