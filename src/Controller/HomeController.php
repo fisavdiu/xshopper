@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ProductRepository;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class HomeController extends AbstractController
 {
@@ -12,10 +14,16 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(ProductRepository $productRepository)
+    public function index(ProductRepository $productRepository, PaginatorInterface $paginator, Request $request)
     {
+        $pagination = $paginator->paginate(
+            $productRepository->findAll(),
+            $request->query->getInt('page', 1),
+            6
+        );
+
         return $this->render('base.html.twig', [
-            'products' => $productRepository->findAll()
+            'pagination' => $pagination
         ]);
     }
 

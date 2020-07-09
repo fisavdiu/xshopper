@@ -8,7 +8,7 @@
       <div class="card-group">
     
          
-        {% for product in products %}
+        {% for product in pagination %}
 <div class="col-sm-4">
   <div class="card">
     <img class="card-img-top" src="{{product.image}}" alt="Card image cap">
@@ -26,6 +26,9 @@
          {% endfor %}
          </div>
         </div>
+        <div>
+    {{ knp_pagination_render(pagination) }}
+</div>
 {% if is_granted('ROLE_ADMIN') %} ADMINISTRATOR {% endif %}
   
         {% endblock %}
