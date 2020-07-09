@@ -15,6 +15,7 @@
     <div class="card-body">
       <a href="/product/{{ product.id }}"><h5 class="card-title">{{product.title}}</h5></a>
       <p class="card-text">{{product.description}}</p>
+      Çmimi <b>{{product.price}} €</b> 
       <a href="{{ path('cart_add', {'id': product.id})  }}"><button type="button" class="btn btn-primary float-right"><i class="fa fa-plus" aria-hidden="true"></i>
  Add To Cart</button></a>
 
