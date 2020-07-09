@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ProductRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
-
+use App\Entity\Product;
 class HomeController extends AbstractController
 {
     
@@ -47,4 +47,15 @@ public function indexAction()
         return $this->redirect($this->generateUrl('admin'));
     throw new \Exception(AccessDeniedException::class);
 }
+/**
+ * @Route("/product/{id}", name="product_page")
+ */
+public function product($id) {
+    $product = $this->getDoctrine()->getRepository
+    (Product::class)->find($id);
+
+    return $this->render('products/product.html.twig' , 
+        array('product' => $product));
+}
+
 }

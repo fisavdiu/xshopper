@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{product.title}}{% endblock %}
+
+{% block body %}
+
+<div class="row">
+
+    <div class="col-md-8">
+      <img class="img-fluid" src="{{ product.image }}" alt="">
+    </div>
+
+    <div class="col-md-4">
+      <h3 class="my-3">Artikulli</h3>
+      <p>{{ product.title }}</p>
+      <h3 class="my-3">Pershkrimi i artikulli</h3>
+      <p>{{ product.description }}</p>
+      <h3 class="my-3">Çmimi</h3>
+      <p><b>{{ product.price }} €</b></p>
+      <a href="{{ path('cart_add', {'id': product.id})  }}"><button type="button" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i>
+ Add To Cart</button></a>
+    </div>
+    
+  </div>
+  <!-- /.row -->
+
+
+ {% endblock %}
